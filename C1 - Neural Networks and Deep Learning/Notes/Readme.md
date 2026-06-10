@@ -402,6 +402,34 @@ Here are the course summary as its given on the course [link](https://www.course
     - `z2` is the result of the equation `z2 = W2*a1 + b`, it has a shape of `(1,1)`
     - `a2` is the result of the equation `a2 = sigmoid(z2)`, it has a shape of `(1,1)`
 
+### General Shape Rules
+
+For any layer `l`:
+
+- `W[l]` has shape `(n[l], n[l-1])`
+- `b[l]` has shape `(n[l], 1)`
+- `Z[l]` has shape `(n[l], 1)` for a single training example
+- `A[l]` has shape `(n[l], 1)` for a single training example
+
+Where:
+- `n[l]` = Number of neurons in the current layer
+- `n[l-1]` = Number of neurons in the previous layer
+
+
+<img src="Images/12.png" alt="Neural Network Diagram" width="800">
+
+### Shapes of the Variables
+
+- `W1` is the weight matrix of the first hidden layer, it has shape `(noOfHiddenNeurons, nx)`
+- `b1` is the bias vector of the first hidden layer, it has shape `(noOfHiddenNeurons, 1)`
+- `Z1` is the result of `Z1 = W1 * X + b1`, it has shape `(noOfHiddenNeurons, 1)`
+- `A1` is the result of `A1 = sigmoid(Z1)`, it has shape `(noOfHiddenNeurons, 1)`
+
+- `W2` is the weight matrix of the current/output layer, it has shape `(noOfCurrentLayerNeurons, noOfHiddenNeurons)`
+- `b2` is the bias vector of the current/output layer, it has shape `(noOfCurrentLayerNeurons, 1)`
+- `Z2` is the result of `Z2 = W2 * A1 + b2`, it has shape `(noOfCurrentLayerNeurons, 1)`
+- `A2` is the result of `A2 = sigmoid(Z2)`, it has shape `(noOfCurrentLayerNeurons, 1)`
+
 ### Vectorizing across multiple examples
 
 - Pseudo code for forward propagation for the 2 layers NN:
